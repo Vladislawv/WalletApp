@@ -8,12 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\WalletApp.Application\WalletApp.Application.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="EntityFramework" Version="6.4.4" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
+      <ProjectReference Include="..\WalletApp.DAL\WalletApp.DAL.csproj" />
     </ItemGroup>
 
 </Project>

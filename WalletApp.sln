@@ -1,11 +1,13 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.Api", "WalletApp.Api\WalletApp.Api.csproj", "{FD0CAB44-E8F0-4CF2-9A53-F0EEA7F1CB3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApi.Domain", "WalletApi.Domain\WalletApi.Domain.csproj", "{361490CB-CA30-460A-9840-EE556BFEA0C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.Domain", "WalletApp.Domain\WalletApp.Domain.csproj", "{361490CB-CA30-460A-9840-EE556BFEA0C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.Infrastructure", "WalletApp.Infrastructure\WalletApp.Infrastructure.csproj", "{0D34A272-74CA-4B30-B719-3DE9661B8321}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.Application", "WalletApp.Application\WalletApp.Application.csproj", "{D1D06B06-556A-4F1E-BF90-3AB66B34B67D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.DAL", "WalletApp.DAL\WalletApp.DAL.csproj", "{8249CC16-519E-45AA-8BE6-92D1C1ED8943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,5 +31,9 @@ Global
 		{D1D06B06-556A-4F1E-BF90-3AB66B34B67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1D06B06-556A-4F1E-BF90-3AB66B34B67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1D06B06-556A-4F1E-BF90-3AB66B34B67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8249CC16-519E-45AA-8BE6-92D1C1ED8943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8249CC16-519E-45AA-8BE6-92D1C1ED8943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8249CC16-519E-45AA-8BE6-92D1C1ED8943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8249CC16-519E-45AA-8BE6-92D1C1ED8943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
