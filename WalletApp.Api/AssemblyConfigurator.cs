@@ -12,6 +12,7 @@ public static class AssemblyConfigurator
             .AddControllers();
         
         services.AddTransient<TransactionIdMiddleware>();
+        services.AddTransient<ExceptionHandlerMiddleware>();
         
         return services;
     }
@@ -25,6 +26,7 @@ public static class AssemblyConfigurator
         }
         
         app.UseMiddleware<TransactionIdMiddleware>();
+        app.UseMiddleware<ExceptionHandlerMiddleware>();
         
         app.MapControllers();
 
