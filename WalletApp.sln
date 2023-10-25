@@ -1,7 +1,7 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.Api", "WalletApp.Api\WalletApp.Api.csproj", "{FD0CAB44-E8F0-4CF2-9A53-F0EEA7F1CB3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApi.Domain", "WalletApi.Domain\WalletApi.Domain.csproj", "{361490CB-CA30-460A-9840-EE556BFEA0C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.Domain", "WalletApp.Domain\WalletApp.Domain.csproj", "{361490CB-CA30-460A-9840-EE556BFEA0C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletApp.Infrastructure", "WalletApp.Infrastructure\WalletApp.Infrastructure.csproj", "{0D34A272-74CA-4B30-B719-3DE9661B8321}"
 EndProject
