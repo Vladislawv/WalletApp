@@ -7,8 +7,4 @@
         <LangVersion>11.0</LangVersion>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\WalletApp.DAL\WalletApp.DAL.csproj" />
-    </ItemGroup>
-
 </Project>
