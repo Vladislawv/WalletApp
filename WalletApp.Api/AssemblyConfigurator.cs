@@ -24,4 +24,10 @@ public static class AssemblyConfigurator
 
         return app;
     }
+
+    public static ILogger<T> CreateConsoleLogger<T>()
+    {
+        var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+        return loggerFactory.CreateLogger<T>();
+    }
 }
