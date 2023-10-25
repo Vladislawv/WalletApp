@@ -1,4 +1,6 @@
-﻿namespace WalletApp.Api;
+﻿using WalletApp.Api.Middlewares;
+
+namespace WalletApp.Api;
 
 public static class AssemblyConfigurator
 {
@@ -8,6 +10,8 @@ public static class AssemblyConfigurator
             .AddEndpointsApiExplorer()
             .AddSwaggerGen()
             .AddControllers();
+        
+        services.AddTransient<TransactionIdMiddleware>();
         
         return services;
     }
@@ -19,6 +23,8 @@ public static class AssemblyConfigurator
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+        
+        app.UseMiddleware<TransactionIdMiddleware>();
         
         app.MapControllers();
 
