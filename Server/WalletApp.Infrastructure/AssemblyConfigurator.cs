@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WalletApp.Application.Contracts;
 using WalletApp.Application.Options;
-using WalletApp.DAL.Models.Users;
+using WalletApp.Domain.UserAggregate;
+using WalletApp.Infrastructure.Auth;
 using WalletApp.Infrastructure.DataAccess.Database;
 
 namespace WalletApp.Infrastructure;
@@ -28,6 +30,8 @@ public static class AssemblyConfigurator
             options.Password.RequireUppercase = identityOptions.Password.RequireUppercase;
             options.Password.RequiredUniqueChars = identityOptions.Password.RequiredUniqueChars;
         }).AddEntityFrameworkStores<WalletAppContext>();
+
+        services.AddTransient<IAuthTokenManager, AuthJwtManager>();
 
         return services;
     }

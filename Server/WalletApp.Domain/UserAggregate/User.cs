@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WalletApp.DAL.Models.Cards;
-using WalletApp.DAL.Models.Transactions;
+using WalletApp.Domain.CardAggregate;
+using WalletApp.Domain.TransactionAggregate;
 
-namespace WalletApp.DAL.Models.Users;
+namespace WalletApp.Domain.UserAggregate;
 
 [Index(nameof(Id))]
 public class User : IdentityUser<Guid>
 {
-    public string Name { get; set; }
-
     public virtual ICollection<Card> Cards { get; set; }
     public virtual ICollection<Transaction> Transactions { get; set; }
 }

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WalletApp.DAL.Models.Cards;
-using WalletApp.DAL.Models.Icons;
-using WalletApp.DAL.Models.Transactions;
-using WalletApp.DAL.Models.Users;
+using WalletApp.Domain.IconAggregate;
+using WalletApp.Domain.CardAggregate;
+using WalletApp.Domain.TransactionAggregate;
+using WalletApp.Domain.UserAggregate;
 
 namespace WalletApp.Infrastructure.DataAccess.Database;
 

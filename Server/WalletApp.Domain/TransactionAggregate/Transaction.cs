@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WalletApp.DAL.Models.Cards;
-using WalletApp.DAL.Models.Users;
+using WalletApp.Domain.CardAggregate;
+using WalletApp.Domain.UserAggregate;
 
-namespace WalletApp.DAL.Models.Transactions;
+namespace WalletApp.Domain.TransactionAggregate;
 
 [Index(nameof(Id))]
 [Index(nameof(CardId))]
