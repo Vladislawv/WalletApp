@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WalletApp.Infrastructure.DataAccess.Database;
@@ -11,9 +12,11 @@ using WalletApp.Infrastructure.DataAccess.Database;
 namespace WalletApp.Infrastructure.DataAccess.Migrations
 {
     [DbContext(typeof(WalletAppContext))]
-    partial class WalletAppContextModelSnapshot : ModelSnapshot
+    [Migration("20231026120832_Created_Cards")]
+    partial class CreatedCards
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,34 +122,6 @@ namespace WalletApp.Infrastructure.DataAccess.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("WalletApp.DAL.Models.Users.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("WalletApp.DAL.Models.Cards.Card", b =>
-                {
-                    b.HasOne("WalletApp.DAL.Models.Users.User", "User")
-                        .WithMany("Cards")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("WalletApp.DAL.Models.Transactions.Transaction", b =>
                 {
                     b.HasOne("WalletApp.DAL.Models.Cards.Card", "Card")
@@ -161,11 +136,6 @@ namespace WalletApp.Infrastructure.DataAccess.Migrations
             modelBuilder.Entity("WalletApp.DAL.Models.Cards.Card", b =>
                 {
                     b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("WalletApp.DAL.Models.Users.User", b =>
-                {
-                    b.Navigation("Cards");
                 });
 #pragma warning restore 612, 618
         }
