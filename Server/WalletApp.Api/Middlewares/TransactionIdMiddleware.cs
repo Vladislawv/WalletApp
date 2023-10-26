@@ -1,4 +1,5 @@
-﻿using WalletApi.Domain.Common;
+﻿using Microsoft.AspNetCore.Http;
+using WalletApp.Domain.Common;
 
 namespace WalletApp.Api.Middlewares;
 

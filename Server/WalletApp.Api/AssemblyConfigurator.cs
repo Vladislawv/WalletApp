@@ -1,10 +1,13 @@
-﻿using WalletApp.Api.Middlewares;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using WalletApp.Api.Middlewares;
 
 namespace WalletApp.Api;
 
 public static class AssemblyConfigurator
 {
-    public static IServiceCollection ConfigureApiServices(this IServiceCollection services)
+    public static IServiceCollection ConfigureWebApiServices(this IServiceCollection services)
     {
         services
             .AddEndpointsApiExplorer()
@@ -31,11 +34,5 @@ public static class AssemblyConfigurator
         app.MapControllers();
 
         return app;
-    }
-
-    public static ILogger<T> CreateConsoleLogger<T>()
-    {
-        var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-        return loggerFactory.CreateLogger<T>();
     }
 }

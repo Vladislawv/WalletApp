@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace WalletApi.Domain.Exceptions;
+namespace WalletApp.Domain.Exceptions;
 
 public abstract class WalletAppException : Exception
 {

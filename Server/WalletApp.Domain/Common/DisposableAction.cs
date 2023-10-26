@@ -1,4 +1,4 @@
-namespace WalletApi.Domain.Common;
+namespace WalletApp.Domain.Common;
 
 public class DisposableAction : IDisposable
 {
