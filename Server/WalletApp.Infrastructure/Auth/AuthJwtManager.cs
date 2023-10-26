@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using WalletApp.Application.Auth.Dto;
+using WalletApp.Application.Auth;
 using WalletApp.Application.Contracts;
 using WalletApp.Application.Options;
 using WalletApp.Domain.UserAggregate;
@@ -20,7 +20,7 @@ public class AuthJwtManager : IAuthTokenManager
         _authTokenOptions = authOptions.Value.Token;
     }
 
-    public AuthTokenDto Generate(User user)
+    public AuthToken Generate(User user)
     {
         var secretKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_authTokenOptions.Secret));
         var expirationDate = DateTimeOffset.UtcNow.AddSeconds(_authTokenOptions.ExpirationTimeSeconds);
@@ -41,6 +41,6 @@ public class AuthJwtManager : IAuthTokenManager
         var token = tokenHandler.CreateToken(tokenDescriptor);
         var authTokenValue = tokenHandler.WriteToken(token);
 
-        return new AuthTokenDto(authTokenValue, expirationDate);
+        return new AuthToken(authTokenValue, expirationDate);
     }
 }

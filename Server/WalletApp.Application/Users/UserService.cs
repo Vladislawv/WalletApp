@@ -63,6 +63,6 @@ public class UserService : IUserService
         }
         
         var errorMessage = string.Join("; ", creationResult.Errors);
-        throw new Exception(errorMessage);
+        throw new BadRequestException(errorMessage);
     }
 }
