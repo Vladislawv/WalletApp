@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using WalletApp.Application.Auth;
+using WalletApp.Application.Auth.Dto;
 using WalletApp.Application.Contracts;
 using WalletApp.Application.Options;
 using WalletApp.Domain.UserAggregate;

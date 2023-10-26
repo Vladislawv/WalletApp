@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Shared.InternalMessaging.CQRS;
 using WalletApp.Application.Options;
+using WalletApp.Application.Users;
+using WalletApp.Domain.UserAggregate;
 
 namespace WalletApp.Application;
 
@@ -19,6 +21,8 @@ public static class AssemblyConfigurator
         
         services.Configure<IdentityOptions>(options =>
             configuration.GetSection(IdentityOptions.Section).Bind(options));
+
+        services.AddTransient<IUserService, UserService>();
         
         return services;
     }
