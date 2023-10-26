@@ -1,5 +1,5 @@
 ﻿using WalletApp.Application.Auth;
-using WalletApp.DAL.Models.Users;
+using WalletApp.Domain.UserAggregate;
 
 namespace WalletApp.Application.Contracts;
 

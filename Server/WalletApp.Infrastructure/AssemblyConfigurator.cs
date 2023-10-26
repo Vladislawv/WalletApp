@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WalletApp.Application.Contracts;
 using WalletApp.Application.Options;
-using WalletApp.DAL.Models.Users;
+using WalletApp.Domain.UserAggregate;
 using WalletApp.Infrastructure.Auth;
 using WalletApp.Infrastructure.DataAccess.Database;
 

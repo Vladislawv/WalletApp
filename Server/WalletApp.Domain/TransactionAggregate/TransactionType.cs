@@ -1,4 +1,4 @@
-﻿namespace WalletApp.DAL.Models.Transactions;
+﻿namespace WalletApp.Domain.TransactionAggregate;
 
 public enum TransactionType
 {

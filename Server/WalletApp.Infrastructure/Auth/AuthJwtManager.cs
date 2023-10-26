@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using WalletApp.Application.Auth;
 using WalletApp.Application.Contracts;
 using WalletApp.Application.Options;
-using WalletApp.DAL.Models.Users;
+using WalletApp.Domain.UserAggregate;
 using AuthTokenOptions = WalletApp.Application.Options.AuthOptions.TokenOptions;
 
 namespace WalletApp.Infrastructure.Auth;
