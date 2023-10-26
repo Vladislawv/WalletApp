@@ -12,6 +12,11 @@ public static class AssemblyConfigurator
     {
         services.AddCQRS(typeof(AssemblyConfigurator).Assembly);
 
+        services.Configure<AuthOptions>(options =>
+        {
+            configuration.GetSection(AuthOptions.Section).Bind(options);
+        });
+        
         services.Configure<IdentityOptions>(options =>
             configuration.GetSection(IdentityOptions.Section).Bind(options));
         
