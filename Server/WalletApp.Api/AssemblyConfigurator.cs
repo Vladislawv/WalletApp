@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using WalletApp.Api.Middlewares;
 
 namespace WalletApp.Api;
@@ -11,7 +12,10 @@ public static class AssemblyConfigurator
     {
         services
             .AddEndpointsApiExplorer()
-            .AddSwaggerGen()
+            .AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "WalletApp API", Version = "v1" });
+            })
             .AddControllers();
         
         services.AddTransient<TransactionIdMiddleware>();
@@ -25,7 +29,10 @@ public static class AssemblyConfigurator
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "WalletApp API v1");
+            });
         }
         
         app.UseMiddleware<TransactionIdMiddleware>();
