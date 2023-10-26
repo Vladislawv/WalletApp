@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WalletApp.DAL.Models.Transactions;
+using WalletApp.DAL.Models.Users;
 
 namespace WalletApp.DAL.Models.Cards;
 
@@ -15,5 +16,6 @@ public class Card
     public string Description { get; set; }
     public string DailyPoints { get; set; }
 
+    public virtual User User { get; set; }
     public virtual ICollection<Transaction> Transactions { get; set; }
 }
