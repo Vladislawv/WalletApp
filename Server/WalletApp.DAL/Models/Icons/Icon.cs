@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WalletApp.DAL.Models.Icon;
+namespace WalletApp.DAL.Models.Icons;
 
 [Index(nameof(Id))]
 public class Icon

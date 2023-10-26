@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WalletApp.DAL.Models.Cards;
 
-namespace WalletApp.DAL.Models.Transaction;
+namespace WalletApp.DAL.Models.Transactions;
 
 [Index(nameof(Id))]
 [Index(nameof(CardId))]
@@ -15,4 +16,6 @@ public class Transaction
     public string Description { get; set; }
     public DateTime CreatedOn { get; set; }
     public bool IsPending { get; set; }
+
+    public virtual Card Card { get; set; }
 }
