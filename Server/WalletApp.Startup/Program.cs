@@ -1,16 +1,16 @@
 using WalletApp.Api;
 using WalletApp.Infrastructure;
 using WalletApp.Application;
-using ApiAssemblyConfigurator = WalletApp.Api.AssemblyConfigurator;
+using StartupConfigurator = WalletApp.Startup.AssemblyConfigurator;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .ConfigureApiServices()
+    .ConfigureWebApiServices()
     .ConfigureInfrastructureServices(builder.Configuration)
     .ConfigureApplicationServices();
 
-var logger = ApiAssemblyConfigurator.CreateConsoleLogger<Program>();
+var logger = StartupConfigurator.CreateConsoleLogger<Program>();
 
 var app = builder.Build();
 

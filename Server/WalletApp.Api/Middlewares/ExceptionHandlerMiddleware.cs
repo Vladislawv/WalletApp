@@ -1,9 +1,13 @@
 ﻿using System.Net;
 using System.Net.Mime;
 using System.Text.Json;
-using WalletApi.Domain.Common;
-using WalletApi.Domain.Exceptions;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using WalletApp.Api.Dto;
+using WalletApp.Domain.Common;
+using WalletApp.Domain.Exceptions;
 
 namespace WalletApp.Api.Middlewares;
 
