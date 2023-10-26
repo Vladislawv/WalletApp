@@ -7,8 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .ConfigureWebApiServices()
-    .ConfigureInfrastructureServices(builder.Configuration)
-    .ConfigureApplicationServices();
+    .ConfigureApplicationServices(builder.Configuration)
+    .ConfigureInfrastructureServices(builder.Configuration);
 
 var logger = StartupConfigurator.CreateConsoleLogger<Program>();
 
