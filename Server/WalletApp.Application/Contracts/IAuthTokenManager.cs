@@ -1,4 +1,4 @@
-﻿using WalletApp.Application.Auth.Dto;
+﻿using WalletApp.Application.Auth;
 using WalletApp.DAL.Models.Users;
 
 namespace WalletApp.Application.Contracts;
