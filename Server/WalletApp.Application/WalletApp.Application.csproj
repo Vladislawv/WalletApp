@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\Shared\Shared.InternalMessaging.CQRS\Shared.InternalMessaging.CQRS.csproj" />
+        <ProjectReference Include="..\WalletApp.DAL\WalletApp.DAL.csproj" />
         <ProjectReference Include="..\WalletApp.Domain\WalletApp.Domain.csproj" />
     </ItemGroup>
 
