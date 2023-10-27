@@ -2,5 +2,5 @@
 
 public interface ITransactionService
 {
-    public IEnumerable<Transaction> Generate(Guid userId, int transactionsCount = 0);
+    public Task<List<Transaction>> GenerateAsync(Guid userId, Guid requestedUserId, int transactionsCount = 0);
 }

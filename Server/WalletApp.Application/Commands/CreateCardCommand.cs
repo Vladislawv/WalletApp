@@ -2,4 +2,4 @@
 
 namespace WalletApp.Application.Commands;
 
-public record CreateCardCommand(Guid UserId) : ICommand;
+public record CreateCardCommand(Guid UserId, Guid RequestedUserId) : ICommand;

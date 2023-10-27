@@ -43,4 +43,20 @@ public class AuthJwtManager : IAuthTokenManager
 
         return new AuthToken(authTokenValue, expirationDate);
     }
+
+    public IEnumerable<Claim> Decrypt(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        return tokenHandler.ReadJwtToken(token).Claims;
+    }
+
+    public Guid ParseUserIdFromToken(string token)
+    {
+        var claims = Decrypt(token);
+        var userIdClaim = claims
+            .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier) 
+            ?? throw new Exception("Wrong token was provided.");
+        
+        return Guid.Parse(userIdClaim.Value);
+    }
 }

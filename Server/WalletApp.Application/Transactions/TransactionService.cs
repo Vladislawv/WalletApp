@@ -1,4 +1,5 @@
 ﻿using WalletApp.Domain.TransactionAggregate;
+using WalletApp.Domain.UserAggregate;
 
 namespace WalletApp.Application.Transactions;
 
@@ -14,9 +15,16 @@ public class TransactionService : ITransactionService
         { "Target", "Transaction from Target" }
     };
 
+    private readonly IUserService _userService;
 
-    public IEnumerable<Transaction> Generate(Guid userId, int transactionsCount = 0)
+    public TransactionService(IUserService userService)
     {
+        _userService = userService;
+    }
+
+    public async Task<List<Transaction>> GenerateAsync(Guid userId, Guid requestedUserId, int transactionsCount = 0)
+    {
+        var transactions = new List<Transaction>();
         transactionsCount = transactionsCount != 0 ? transactionsCount : DEFAULT_TRANSACTIONS_COUNT_TO_GENERATE;
 
         for (var count = 0; count <= transactionsCount; count++)
@@ -26,7 +34,7 @@ public class TransactionService : ITransactionService
             var creationDate = DateTime.UtcNow;
             var isPending = GenerateIsPending();
             
-            yield return new Transaction
+            transactions.Add(new Transaction
             {
                 UserId = userId,
                 // TODO IconId = null,
@@ -35,10 +43,12 @@ public class TransactionService : ITransactionService
                 Name = transactionName,
                 Description = GenerateDescription(isPending, transactionName),
                 CreatedOn = creationDate,
-                Date = GetDate(creationDate),
-                IsPending = isPending,
-            };
+                Date = await GetDateAsync(creationDate, userId, requestedUserId),
+                IsPending = isPending
+            });
         }
+
+        return transactions;
     }
 
     private static TransactionType GenerateTransactionType()
@@ -71,10 +81,19 @@ public class TransactionService : ITransactionService
         return transactionNames[randomIndex];
     }
 
-    private static string GetDate(DateTime creationDate)
+    private async Task<string> GetDateAsync(DateTime creationDate, Guid userId, Guid requestedUserId)
     {
         var isTransactionMadeInTheCurrentWeek = (DateTime.UtcNow - creationDate).Days < 7;
-        return isTransactionMadeInTheCurrentWeek ? creationDate.DayOfWeek.ToString() : creationDate.ToString("M/d/yy");
+        var date = isTransactionMadeInTheCurrentWeek ? creationDate.DayOfWeek.ToString() : creationDate.ToString("M/d/yy");
+
+        var isDifferentUsers = requestedUserId != userId;
+        if (isDifferentUsers)
+        {
+            var requestedUser = await _userService.GetByIdAsync(requestedUserId);
+            date = string.Format("{userName} - {date}", requestedUser.UserName, date);
+        }
+        
+        return date;
     }
 
     private static bool GenerateIsPending()

@@ -32,7 +32,7 @@ public class CreateCardCommandHandler : ICommandHandler<CreateCardCommand>
             Available = MAX_TOTAL - total,
             IsPaymentRequired = IS_PAYMENT_REQUIRED,
             Description = GenerateDescription(),
-            Transactions = _transactionService.Generate(request.UserId).ToList()
+            Transactions = await _transactionService.GenerateAsync(request.UserId, request.RequestedUserId)
         };
         
         await _cardRepository.Cards.AddAsync(card, cancellationToken);
