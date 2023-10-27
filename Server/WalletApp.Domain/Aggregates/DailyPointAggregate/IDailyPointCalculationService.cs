@@ -1,4 +1,4 @@
-﻿namespace WalletApp.Domain.DailyPointAggregate;
+﻿namespace WalletApp.Domain.Aggregates.DailyPointAggregate;
 
 public interface IDailyPointCalculationService
 {

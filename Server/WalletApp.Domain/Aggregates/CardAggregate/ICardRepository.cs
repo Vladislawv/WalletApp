@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WalletApp.Domain.CardAggregate;
+namespace WalletApp.Domain.Aggregates.CardAggregate;
 
 public interface ICardRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace WalletApp.Domain.TransactionAggregate;
+﻿namespace WalletApp.Domain.Aggregates.TransactionAggregate;
 
 public interface ITransactionDataSource
 {

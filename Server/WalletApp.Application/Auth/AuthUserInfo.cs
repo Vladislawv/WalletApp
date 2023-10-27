@@ -1,4 +1,4 @@
-﻿using WalletApp.Domain.UserAggregate;
+﻿using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Application.Auth;
 

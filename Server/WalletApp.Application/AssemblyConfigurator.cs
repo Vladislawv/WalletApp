@@ -4,9 +4,9 @@ using WalletApp.Application.DailyPoints;
 using WalletApp.Application.Options;
 using WalletApp.Application.Transactions;
 using WalletApp.Application.Users;
-using WalletApp.Domain.DailyPointAggregate;
-using WalletApp.Domain.TransactionAggregate;
-using WalletApp.Domain.UserAggregate;
+using WalletApp.Domain.Aggregates.DailyPointAggregate;
+using WalletApp.Domain.Aggregates.TransactionAggregate;
+using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Application;
 

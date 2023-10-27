@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WalletApp.Domain.CardAggregate;
-using WalletApp.Domain.TransactionAggregate;
+using WalletApp.Domain.Aggregates.CardAggregate;
+using WalletApp.Domain.Aggregates.TransactionAggregate;
 
-namespace WalletApp.Domain.UserAggregate;
+namespace WalletApp.Domain.Aggregates.UserAggregate;
 
 [Index(nameof(Id))]
 public class User : IdentityUser<Guid>

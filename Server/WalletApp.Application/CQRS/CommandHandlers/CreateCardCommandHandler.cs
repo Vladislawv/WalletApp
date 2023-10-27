@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using WalletApp.Application.CQRS.Abstractions;
 using WalletApp.Application.CQRS.Commands;
-using WalletApp.Domain.CardAggregate;
-using WalletApp.Domain.TransactionAggregate;
+using WalletApp.Domain.Aggregates.CardAggregate;
+using WalletApp.Domain.Aggregates.TransactionAggregate;
 
 namespace WalletApp.Application.CQRS.CommandHandlers;
 

@@ -1,4 +1,4 @@
-﻿using WalletApp.Domain.DailyPointAggregate;
+﻿using WalletApp.Domain.Aggregates.DailyPointAggregate;
 
 namespace WalletApp.Application.DailyPoints;
 

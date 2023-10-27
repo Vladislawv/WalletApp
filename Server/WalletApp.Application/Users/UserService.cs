@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WalletApp.Domain.DailyPointAggregate;
+using WalletApp.Domain.Aggregates.DailyPointAggregate;
+using WalletApp.Domain.Aggregates.UserAggregate;
 using WalletApp.Domain.Exceptions;
-using WalletApp.Domain.UserAggregate;
 
 namespace WalletApp.Application.Users;
 

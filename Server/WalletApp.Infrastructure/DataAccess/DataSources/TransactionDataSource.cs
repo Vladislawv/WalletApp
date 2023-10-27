@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WalletApp.Domain.TransactionAggregate;
+using WalletApp.Domain.Aggregates.TransactionAggregate;
 using WalletApp.Infrastructure.DataAccess.Database;
 
 namespace WalletApp.Infrastructure.DataAccess.DataSources;

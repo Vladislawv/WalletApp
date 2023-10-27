@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WalletApp.Application.CQRS.Abstractions;
 using WalletApp.Application.CQRS.Queries;
-using WalletApp.Domain.CardAggregate;
+using WalletApp.Domain.Aggregates.CardAggregate;
 using WalletApp.Domain.Exceptions;
 
 namespace WalletApp.Application.CQRS.QueryHandlers;

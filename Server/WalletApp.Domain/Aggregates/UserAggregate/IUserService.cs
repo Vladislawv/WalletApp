@@ -1,4 +1,4 @@
-﻿namespace WalletApp.Domain.UserAggregate;
+﻿namespace WalletApp.Domain.Aggregates.UserAggregate;
 
 public interface IUserService
 {

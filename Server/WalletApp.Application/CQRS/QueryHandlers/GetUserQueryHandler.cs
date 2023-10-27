@@ -1,6 +1,6 @@
 ﻿using WalletApp.Application.CQRS.Abstractions;
 using WalletApp.Application.CQRS.Queries;
-using WalletApp.Domain.UserAggregate;
+using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Application.CQRS.QueryHandlers;
 

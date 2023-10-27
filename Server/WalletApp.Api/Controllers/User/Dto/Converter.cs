@@ -1,8 +1,8 @@
 ﻿using WalletApp.Api.Controllers.Card.Dto;
 using WalletApp.Api.Controllers.Transaction.Dto;
-using UserDomain = WalletApp.Domain.UserAggregate.User;
-using CardDomain = WalletApp.Domain.CardAggregate.Card;
-using TransactionDomain = WalletApp.Domain.TransactionAggregate.Transaction;
+using UserDomain = WalletApp.Domain.Aggregates.UserAggregate.User;
+using CardDomain = WalletApp.Domain.Aggregates.CardAggregate.Card;
+using TransactionDomain = WalletApp.Domain.Aggregates.TransactionAggregate.Transaction;
 
 namespace WalletApp.Api.Controllers.User.Dto;
 

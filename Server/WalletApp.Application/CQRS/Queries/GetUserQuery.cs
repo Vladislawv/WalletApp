@@ -1,5 +1,5 @@
 ﻿using WalletApp.Application.CQRS.Abstractions;
-using WalletApp.Domain.UserAggregate;
+using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Application.CQRS.Queries;
 

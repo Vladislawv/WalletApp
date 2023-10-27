@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WalletApp.Domain.IconAggregate;
-using WalletApp.Domain.CardAggregate;
-using WalletApp.Domain.TransactionAggregate;
-using WalletApp.Domain.UserAggregate;
+using WalletApp.Domain.Aggregates.CardAggregate;
+using WalletApp.Domain.Aggregates.IconAggregate;
+using WalletApp.Domain.Aggregates.TransactionAggregate;
+using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Infrastructure.DataAccess.Database;
 
