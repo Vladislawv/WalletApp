@@ -15,20 +15,26 @@ public static class AssemblyConfigurator
     public static IServiceCollection ConfigureApplicationServices(
         this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(AssemblyConfigurator).Assembly));
-
-        services.Configure<AuthOptions>(options =>
-        {
-            configuration.GetSection(AuthOptions.Section).Bind(options);
-        });
-        
-        services.Configure<IdentityOptions>(options =>
-            configuration.GetSection(IdentityOptions.Section).Bind(options));
+        services.AddCQRS();
+        services.ConfigureOptions(configuration);
 
         services.AddTransient<IDailyPointCalculationService, DailyPointCalculationService>();
         services.AddTransient<IUserService, UserService>();
         services.AddTransient<ITransactionService, TransactionService>();
-        
+
+        return services;
+    }
+
+    private static IServiceCollection AddCQRS(this IServiceCollection services)
+    {
+        services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(AssemblyConfigurator).Assembly));
+        return services;
+    }
+
+    private static IServiceCollection ConfigureOptions(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.Configure<AuthOptions>(options => configuration.GetSection(AuthOptions.Section).Bind(options));
+        services.Configure<IdentityOptions>(options => configuration.GetSection(IdentityOptions.Section).Bind(options));
         return services;
     }
 }
