@@ -13,6 +13,7 @@ public static class AssemblyConfigurator
         services
             .AddEndpointsApiExplorer()
             .AddSwaggerConfiguration()
+            .AddHttpContextAccessor()
             .AddControllers();
         
         services.AddTransient<TransactionIdMiddleware>();

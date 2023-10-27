@@ -4,8 +4,6 @@ namespace WalletApp.Application.DailyPoints;
 
 public class DailyPointCalculationService : IDailyPointCalculationService
 {
-    private const string INITIAL_POINTS = "10";
-
     private static readonly List<DateTime> FirstDaysOfSeason = new()
     {
         new DateTime(DateTime.Now.Year, 12, 1),
@@ -51,11 +49,6 @@ public class DailyPointCalculationService : IDailyPointCalculationService
         }
 
         return ToString(totalPoints);
-    }
-
-    public string GetInitialPoints()
-    {
-        return INITIAL_POINTS;
     }
 
     private static string ToString(int totalPoints)

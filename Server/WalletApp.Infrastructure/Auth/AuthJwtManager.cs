@@ -13,6 +13,7 @@ namespace WalletApp.Infrastructure.Auth;
 
 public class AuthJwtManager : IAuthTokenManager
 {
+    private const string ID_CLAIM_TYPE = "nameid";
     private readonly AuthTokenOptions _authTokenOptions;
 
     public AuthJwtManager(IOptions<AuthOptions> authOptions)
@@ -42,5 +43,21 @@ public class AuthJwtManager : IAuthTokenManager
         var authTokenValue = tokenHandler.WriteToken(token);
 
         return new AuthToken(authTokenValue, expirationDate);
+    }
+
+    public IEnumerable<Claim> Decrypt(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        return tokenHandler.ReadJwtToken(token).Claims;
+    }
+
+    public Guid ParseUserIdFromToken(string token)
+    {
+        var claims = Decrypt(token);
+        var userIdClaim = claims
+            .FirstOrDefault(x => x.Type == ID_CLAIM_TYPE) 
+            ?? throw new Exception("Wrong token was provided.");
+        
+        return Guid.Parse(userIdClaim.Value);
     }
 }

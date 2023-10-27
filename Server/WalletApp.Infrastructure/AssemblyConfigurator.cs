@@ -6,9 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using WalletApp.Application.Contracts;
 using WalletApp.Application.Options;
+using WalletApp.Domain.CardAggregate;
 using WalletApp.Domain.UserAggregate;
 using WalletApp.Infrastructure.Auth;
 using WalletApp.Infrastructure.DataAccess.Database;
+using WalletApp.Infrastructure.DataAccess.Repositories;
 
 namespace WalletApp.Infrastructure;
 
@@ -26,6 +28,7 @@ public static class AssemblyConfigurator
         services.ConfigureAuth(configuration);
 
         services.AddTransient<IAuthTokenManager, AuthJwtManager>();
+        services.AddTransient<ICardRepository, CardRepository>();
 
         return services;
     }
