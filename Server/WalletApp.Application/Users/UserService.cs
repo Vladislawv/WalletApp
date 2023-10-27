@@ -20,6 +20,8 @@ public class UserService : IUserService
     public async Task<User> GetByIdAsync(Guid id)
     {
         var user = await _userManager.Users
+            .Include(x => x.Cards)
+            .Include(x => x.Transactions)
             .FirstOrDefaultAsync(x => x.Id == id)
             ?? throw new NotFoundException($"User with given Id: {id} is not found in the system");
 
