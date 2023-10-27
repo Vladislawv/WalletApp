@@ -17,7 +17,7 @@ public static class AssemblyConfigurator
             .AddHttpContextAccessor()
             .AddControllers();
         
-        services.AddTransient<TransactionIdMiddleware>();
+        services.AddTransient<SessionIdMiddleware>();
         services.AddTransient<ExceptionHandlerMiddleware>();
         
         return services;
@@ -34,7 +34,7 @@ public static class AssemblyConfigurator
             });
         }
         
-        app.UseMiddleware<TransactionIdMiddleware>();
+        app.UseMiddleware<SessionIdMiddleware>();
         app.UseMiddleware<ExceptionHandlerMiddleware>();
         
         app.MapControllers();

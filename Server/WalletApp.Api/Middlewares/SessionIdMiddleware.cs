@@ -3,12 +3,12 @@ using WalletApp.Domain.Common;
 
 namespace WalletApp.Api.Middlewares;
 
-public class TransactionIdMiddleware : IMiddleware
+public class SessionIdMiddleware : IMiddleware
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        var transactionId = Guid.NewGuid().ToString();
-        using (CurrentTransaction.SetTransactionId(transactionId))
+        var sessionId = Guid.NewGuid().ToString();
+        using (CurrentSession.SetSessionId(sessionId))
         {
             await next.Invoke(context);
         }
