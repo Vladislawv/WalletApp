@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WalletApp.Api.Controllers.Card.Dto;
 using WalletApp.Application.Commands;
 using WalletApp.Application.Contracts;
+using WalletApp.Application.Queries;
 
 namespace WalletApp.Api.Controllers.Card;
 
@@ -30,11 +32,26 @@ public class CardController : ControllerBase
     }
 
     /// <summary>
+    /// Returns the card for given card id.
+    /// </summary>
+    /// <param name="id">The card id.</param>
+    /// <response code="200">If operation was successful.</response>
+    /// <response code="404">If card was not found.</response>
+    /// <returns>Card.</returns>
+    [HttpGet("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetByIdAsync([FromRoute, Required] Guid id)
+    {
+        var card = await _mediator.Send(new GetCardQuery(id));
+        return Ok(card.ToDto());
+    }
+
+    /// <summary>
     /// Create card with random data including 10 random transactions for specific user with given userId.
     /// </summary>
     /// <param name="userId">The user id.</param>
     /// <response code="200">If operation was successful.</response>
-    /// <response code="404">If user was not found.</response>
+    /// <response code="400">If operation was wrong.</response>
     /// <returns>Status code of the operation.</returns>
     [HttpPost("{userId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
