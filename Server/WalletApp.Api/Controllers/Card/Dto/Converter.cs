@@ -23,8 +23,12 @@ public static class Converter
         };
     }
 
-    private static List<TransactionDto> ToDto(this ICollection<TransactionDomain> transactions)
+    private static List<TransactionDto> ToDto(this IEnumerable<TransactionDomain> transactions)
     {
-        return transactions.Select(x => x.ToDto()).ToList();
+        return transactions
+            .OrderByDescending(x => x.CreatedOn)
+            .Take(10)
+            .Select(x => x.ToDto())
+            .ToList();
     }
 }
