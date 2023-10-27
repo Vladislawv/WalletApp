@@ -3,8 +3,10 @@ using Microsoft.Extensions.Configuration;
 using Shared.InternalMessaging.CQRS;
 using WalletApp.Application.DailyPoints;
 using WalletApp.Application.Options;
+using WalletApp.Application.Transactions;
 using WalletApp.Application.Users;
 using WalletApp.Domain.DailyPointAggregate;
+using WalletApp.Domain.TransactionAggregate;
 using WalletApp.Domain.UserAggregate;
 
 namespace WalletApp.Application;
@@ -26,6 +28,7 @@ public static class AssemblyConfigurator
 
         services.AddTransient<IDailyPointCalculationService, DailyPointCalculationService>();
         services.AddTransient<IUserService, UserService>();
+        services.AddTransient<ITransactionService, TransactionService>();
         
         return services;
     }
