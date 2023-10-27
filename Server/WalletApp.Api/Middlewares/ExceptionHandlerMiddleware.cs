@@ -43,7 +43,7 @@ public class ExceptionHandlerMiddleware : IMiddleware
         var response = context.Response;
         response.ContentType = MediaTypeNames.Application.Json;
 
-        var errorDto = new ErrorDto { TransactionId = CurrentTransaction.TransactionId };
+        var errorDto = new ErrorDto { SessionId = CurrentSession.SessionId };
 
         if (ex is WalletAppException exception)
         {
