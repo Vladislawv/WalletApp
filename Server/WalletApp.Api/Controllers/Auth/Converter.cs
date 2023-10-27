@@ -15,7 +15,7 @@ public static class Converter
 
     public static GetAuthUserInfoQuery ToQuery(this GetAuthUserInfoRequest request)
     {
-        return new GetAuthUserInfoQuery(request.UserNameOrEmai, request.Password);
+        return new GetAuthUserInfoQuery(request.UserNameOrEmail, request.Password);
     }
     
     public static AuthUserInfoDto ToDto(this AuthUserInfo authUserInfo)

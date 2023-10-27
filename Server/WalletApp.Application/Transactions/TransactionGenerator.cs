@@ -39,7 +39,6 @@ public class TransactionGenerator : ITransactionGenerator
             transactions.Add(new Transaction
             {
                 UserId = userId,
-                // TODO IconId = null,
                 TransactionType = transactionType,
                 Total = GenerateTotal(),
                 Name = transactionName,
