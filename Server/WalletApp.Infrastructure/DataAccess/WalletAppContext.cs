@@ -6,7 +6,7 @@ using WalletApp.Domain.Aggregates.IconAggregate;
 using WalletApp.Domain.Aggregates.TransactionAggregate;
 using WalletApp.Domain.Aggregates.UserAggregate;
 
-namespace WalletApp.Infrastructure.DataAccess.Database;
+namespace WalletApp.Infrastructure.DataAccess;
 
 public class WalletAppContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {

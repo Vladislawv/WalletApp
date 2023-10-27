@@ -10,7 +10,7 @@ using WalletApp.Domain.Aggregates.CardAggregate;
 using WalletApp.Domain.Aggregates.TransactionAggregate;
 using WalletApp.Domain.Aggregates.UserAggregate;
 using WalletApp.Infrastructure.Auth;
-using WalletApp.Infrastructure.DataAccess.Database;
+using WalletApp.Infrastructure.DataAccess;
 using WalletApp.Infrastructure.DataAccess.DataSources;
 using WalletApp.Infrastructure.DataAccess.Repositories;
 
