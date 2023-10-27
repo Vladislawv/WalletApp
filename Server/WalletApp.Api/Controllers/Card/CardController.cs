@@ -30,7 +30,7 @@ public class CardController : ControllerBase
     }
 
     /// <summary>
-    /// Create card with random data for specific user with given userId.
+    /// Create card with random data including 10 random transactions for specific user with given userId.
     /// </summary>
     /// <param name="userId">The user id.</param>
     /// <response code="200">If operation was successful.</response>
