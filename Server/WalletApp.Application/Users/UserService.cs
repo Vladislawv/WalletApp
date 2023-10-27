@@ -72,8 +72,7 @@ public class UserService : IUserService
 
     private User BuildUser(string userName, string email)
     {
-        var initialPoints = _dailyPointCalculationService.GetInitialPoints();
-        return new User { UserName = userName, Email = email, DailyPoints = initialPoints, CreatedOn = DateTime.UtcNow };
+        return new User { UserName = userName, Email = email, DailyPoints = string.Empty, CreatedOn = DateTime.UtcNow };
     }
 
     private static void ThrowIfCreationIsFail(IdentityResult creationResult)
