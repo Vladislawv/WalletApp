@@ -16,6 +16,7 @@ public class Transaction
     public double Total { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
+    public string Date { get; set; }
     public DateTime CreatedOn { get; set; }
     public bool IsPending { get; set; }
 
