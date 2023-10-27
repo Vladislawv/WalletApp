@@ -20,7 +20,7 @@ public static class AssemblyConfigurator
 
         services.AddTransient<IDailyPointCalculationService, DailyPointCalculationService>();
         services.AddTransient<IUserService, UserService>();
-        services.AddTransient<ITransactionService, TransactionService>();
+        services.AddTransient<ITransactionGenerator, TransactionGenerator>();
 
         return services;
     }

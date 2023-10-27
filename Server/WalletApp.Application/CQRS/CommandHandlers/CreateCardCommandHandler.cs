@@ -12,12 +12,12 @@ public class CreateCardCommandHandler : ICommandHandler<CreateCardCommand>
     private const bool IS_PAYMENT_REQUIRED = false;
     
     private readonly ICardRepository _cardRepository;
-    private readonly ITransactionService _transactionService;
+    private readonly ITransactionGenerator _transactionGenerator;
 
-    public CreateCardCommandHandler(ICardRepository cardRepository, ITransactionService transactionService)
+    public CreateCardCommandHandler(ICardRepository cardRepository, ITransactionGenerator transactionGenerator)
     {
         _cardRepository = cardRepository;
-        _transactionService = transactionService;
+        _transactionGenerator = transactionGenerator;
     }
 
     public async Task Handle(CreateCardCommand request, CancellationToken cancellationToken)
@@ -33,7 +33,7 @@ public class CreateCardCommandHandler : ICommandHandler<CreateCardCommand>
             Available = MAX_TOTAL - total,
             IsPaymentRequired = IS_PAYMENT_REQUIRED,
             Description = GenerateDescription(),
-            Transactions = await _transactionService.GenerateAsync(request.UserId, request.RequestedUserId)
+            Transactions = await _transactionGenerator.GenerateAsync(request.UserId, request.RequestedUserId)
         };
         
         await _cardRepository.Cards.AddAsync(card, cancellationToken);

@@ -3,7 +3,7 @@ using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Application.Transactions;
 
-public class TransactionService : ITransactionService
+public class TransactionGenerator : ITransactionGenerator
 {
     private const int DEFAULT_TRANSACTIONS_COUNT_TO_GENERATE = 10;
     private const int MAX_TOTAL = 10000;
@@ -18,7 +18,7 @@ public class TransactionService : ITransactionService
 
     private readonly IUserService _userService;
 
-    public TransactionService(IUserService userService)
+    public TransactionGenerator(IUserService userService)
     {
         _userService = userService;
     }
