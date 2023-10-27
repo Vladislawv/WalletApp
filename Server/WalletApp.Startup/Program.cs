@@ -16,7 +16,10 @@ var app = builder.Build();
 
 app.UseWebApi();
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.Services.InitializeDatabase();
 
 logger.LogInformation("WalletApp server has been started.");
