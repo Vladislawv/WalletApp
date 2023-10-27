@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using WalletApp.Domain.DailyPointAggregate;
 using WalletApp.Domain.Exceptions;
 using WalletApp.Domain.UserAggregate;
@@ -14,6 +15,18 @@ public class UserService : IUserService
     {
         _userManager = userManager;
         _dailyPointCalculationService = dailyPointCalculationService;
+    }
+
+    public async Task<User> GetByIdAsync(Guid id)
+    {
+        var user = await _userManager.Users
+            .FirstOrDefaultAsync(x => x.Id == id)
+            ?? throw new NotFoundException($"User with given Id: {id} is not found in the system");
+
+        user.DailyPoints = _dailyPointCalculationService.Calculate(user.CreatedOn);
+        await _userManager.UpdateAsync(user);
+        
+        return user;
     }
 
     public async Task<User> GetByCredentialsAsync(string userNameOrEmail, string password)
