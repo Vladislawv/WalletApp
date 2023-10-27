@@ -8,6 +8,8 @@ namespace WalletApp.Domain.UserAggregate;
 [Index(nameof(Id))]
 public class User : IdentityUser<Guid>
 {
+    public string DailyPoints { get; set; }
+    
     public virtual ICollection<Card> Cards { get; set; }
     public virtual ICollection<Transaction> Transactions { get; set; }
 }

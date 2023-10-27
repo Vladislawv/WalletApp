@@ -14,7 +14,6 @@ public class Card
     public double Available { get; set; }
     public bool IsPaymentRequired { get; set; }
     public string Description { get; set; }
-    public string DailyPoints { get; set; }
 
     public virtual User User { get; set; }
     public virtual ICollection<Transaction> Transactions { get; set; }
