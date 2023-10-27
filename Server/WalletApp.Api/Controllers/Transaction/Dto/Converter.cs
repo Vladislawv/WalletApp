@@ -17,7 +17,7 @@ public static class Converter
             Id = transaction.Id,
             CardId = transaction.CardId,
             IconId = transaction.IconId,
-            TransactionType = transaction.TransactionType,
+            TransactionType = transaction.TransactionType.ToString(),
             Total = transaction.TransactionType is TransactionType.Payment ? $"+{transactionTotal}" : transactionTotal,
             Name = transaction.Name,
             Description = transaction.Description,
