@@ -15,7 +15,6 @@ public static class Converter
         return new TransactionDto
         {
             Id = transaction.Id,
-            UserId = transaction.UserId,
             CardId = transaction.CardId,
             IconId = transaction.IconId,
             TransactionType = transaction.TransactionType,

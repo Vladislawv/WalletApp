@@ -13,9 +13,5 @@ public class TransactionConfiguration : IEntityTypeConfiguration<Transaction>
         builder.HasOne<Card>(transaction => transaction.Card)
             .WithMany(card => card.Transactions)
             .HasForeignKey(transaction => transaction.CardId);
-
-        builder.HasOne<User>(transaction => transaction.User)
-            .WithMany(user => user.Transactions)
-            .HasForeignKey(transaction => transaction.UserId);
     }
 }

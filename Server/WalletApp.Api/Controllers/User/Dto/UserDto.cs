@@ -11,5 +11,4 @@ public class UserDto
     public string DailyPoints { get; set; }
     public DateTime CreatedOn { get; set; }
     public ICollection<CardDto> Cards { get; set; }
-    public ICollection<TransactionDto> Transactions { get; set; }
 }

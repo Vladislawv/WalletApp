@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WalletApp.Domain.Aggregates.CardAggregate;
-using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Domain.Aggregates.TransactionAggregate;
 
@@ -9,7 +8,6 @@ namespace WalletApp.Domain.Aggregates.TransactionAggregate;
 public class Transaction
 {
     public Guid Id { get; set; }
-    public Guid UserId { get; set; }
     public Guid CardId { get; set; }
     public Guid IconId { get; set; }
     public TransactionType TransactionType { get; set; }
@@ -20,6 +18,5 @@ public class Transaction
     public DateTime CreatedOn { get; set; }
     public bool IsPending { get; set; }
 
-    public virtual User User { get; set; }
     public virtual Card Card { get; set; }
 }
