@@ -28,10 +28,8 @@ public static class AssemblyConfigurator
         
         services.ConfigureIdentity(configuration);
         services.ConfigureAuth(configuration);
-
-        services.AddTransient<IAuthTokenManager, AuthJwtManager>();
-        services.AddTransient<ICardRepository, CardRepository>();
-        services.AddTransient<ITransactionDataSource, TransactionDataSource>();
+        services.ConfigureRepositories();
+        services.ConfigureDataSources();
 
         return services;
     }
@@ -79,7 +77,22 @@ public static class AssemblyConfigurator
             });
 
         services.AddAuthorization();
+        
+        services.AddTransient<IAuthTokenManager, AuthJwtManager>();
 
+        return services;
+    }
+
+    private static IServiceCollection ConfigureRepositories(this IServiceCollection services)
+    {
+        services.AddTransient<ICardRepository, CardRepository>();
+        return services;
+    }
+    
+    private static IServiceCollection ConfigureDataSources(this IServiceCollection services)
+    {
+        services.AddTransient<ITransactionDataSource, TransactionDataSource>();
+        services.AddTransient<ICardDataSource, CardDataSource>();
         return services;
     }
 
