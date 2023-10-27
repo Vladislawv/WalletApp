@@ -13,6 +13,7 @@ namespace WalletApp.Infrastructure.Auth;
 
 public class AuthJwtManager : IAuthTokenManager
 {
+    private const string ID_CLAIM_TYPE = "nameid";
     private readonly AuthTokenOptions _authTokenOptions;
 
     public AuthJwtManager(IOptions<AuthOptions> authOptions)
@@ -54,7 +55,7 @@ public class AuthJwtManager : IAuthTokenManager
     {
         var claims = Decrypt(token);
         var userIdClaim = claims
-            .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier) 
+            .FirstOrDefault(x => x.Type == ID_CLAIM_TYPE) 
             ?? throw new Exception("Wrong token was provided.");
         
         return Guid.Parse(userIdClaim.Value);

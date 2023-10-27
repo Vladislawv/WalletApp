@@ -10,6 +10,7 @@ public class TransactionService : ITransactionService
 
     private static readonly Dictionary<string, string> TRANSACTIONS = new()
     {
+        { "Payment", "From JPMorgan Chase Bank National" },
         { "Apple", "Transaction from Apple" },
         { "IKEA", "Transaction from IKEA" },
         { "Target", "Transaction from Target" }
@@ -27,7 +28,7 @@ public class TransactionService : ITransactionService
         var transactions = new List<Transaction>();
         transactionsCount = transactionsCount != 0 ? transactionsCount : DEFAULT_TRANSACTIONS_COUNT_TO_GENERATE;
 
-        for (var count = 0; count <= transactionsCount; count++)
+        for (var count = 0; count < transactionsCount; count++)
         {
             var transactionType = GenerateTransactionType();
             var transactionName = GetName(transactionType);
@@ -53,8 +54,8 @@ public class TransactionService : ITransactionService
 
     private static TransactionType GenerateTransactionType()
     {
-        var randomType = new Random().Next(0, 2);
-        return (TransactionType)randomType;
+        var randomType = new Random().Next(0, 5);
+        return randomType <= 2 ? TransactionType.Credit : TransactionType.Payment;
     }
 
     private static double GenerateTotal()
@@ -90,7 +91,7 @@ public class TransactionService : ITransactionService
         if (isDifferentUsers)
         {
             var requestedUser = await _userService.GetByIdAsync(requestedUserId);
-            date = string.Format("{userName} - {date}", requestedUser.UserName, date);
+            date = $"{requestedUser.UserName} - {date}";
         }
         
         return date;
@@ -98,7 +99,7 @@ public class TransactionService : ITransactionService
 
     private static bool GenerateIsPending()
     {
-        var randomIndex = new Random().Next(0, 2);
-        return randomIndex is not 0;
+        var randomIndex = new Random().Next(0, 5);
+        return randomIndex > 2;
     }
 }

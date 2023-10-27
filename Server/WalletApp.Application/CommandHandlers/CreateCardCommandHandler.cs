@@ -1,4 +1,5 @@
-﻿using Shared.InternalMessaging.CQRS.Abstractions;
+﻿using System.Globalization;
+using Shared.InternalMessaging.CQRS.Abstractions;
 using WalletApp.Application.Commands;
 using WalletApp.Domain.CardAggregate;
 using WalletApp.Domain.TransactionAggregate;
@@ -46,10 +47,10 @@ public class CreateCardCommandHandler : ICommandHandler<CreateCardCommand>
 
     private static string GenerateDescription()
     {
-        var currentMonth = DateTime.UtcNow.ToString("MMM");
+        var currentMonth = DateTime.UtcNow.ToString("MMMM", CultureInfo.InvariantCulture);
         
         return !IS_PAYMENT_REQUIRED
-            ? string.Format("You've paid your {month} balance.", currentMonth)
-            : string.Format("You need to pay your {month} balance.", currentMonth);
+            ? $"You've paid your {currentMonth} balance." 
+            : $"You need to pay your {currentMonth} balance.";
     }
 }
