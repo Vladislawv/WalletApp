@@ -1,10 +1,10 @@
-﻿using Shared.InternalMessaging.CQRS.Abstractions;
-using WalletApp.Application.Auth;
+﻿using WalletApp.Application.Auth;
 using WalletApp.Application.Contracts;
-using WalletApp.Application.Queries;
+using WalletApp.Application.CQRS.Abstractions;
+using WalletApp.Application.CQRS.Queries;
 using WalletApp.Domain.UserAggregate;
 
-namespace WalletApp.Application.QueryHandlers;
+namespace WalletApp.Application.CQRS.QueryHandlers;
 
 public class GetAuthUserInfoQueryHandler : IQueryHandler<GetAuthUserInfoQuery, AuthUserInfo>
 {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WalletApp.Api.Controllers.Transaction.Dto;
-using WalletApp.Application.Queries;
+using WalletApp.Application.CQRS.Queries;
 
 namespace WalletApp.Api.Controllers.Transaction;
 

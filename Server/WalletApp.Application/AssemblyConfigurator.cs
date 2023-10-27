@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using Shared.InternalMessaging.CQRS;
 using WalletApp.Application.DailyPoints;
 using WalletApp.Application.Options;
 using WalletApp.Application.Transactions;
@@ -16,7 +15,7 @@ public static class AssemblyConfigurator
     public static IServiceCollection ConfigureApplicationServices(
         this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddCQRS(typeof(AssemblyConfigurator).Assembly);
+        services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(AssemblyConfigurator).Assembly));
 
         services.Configure<AuthOptions>(options =>
         {

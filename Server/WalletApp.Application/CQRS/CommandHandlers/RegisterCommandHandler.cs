@@ -1,8 +1,8 @@
-﻿using Shared.InternalMessaging.CQRS.Abstractions;
-using WalletApp.Application.Commands;
+﻿using WalletApp.Application.CQRS.Abstractions;
+using WalletApp.Application.CQRS.Commands;
 using WalletApp.Domain.UserAggregate;
 
-namespace WalletApp.Application.CommandHandlers;
+namespace WalletApp.Application.CQRS.CommandHandlers;
 
 public class RegisterCommandHandler : ICommandHandler<RegisterCommand>
 {

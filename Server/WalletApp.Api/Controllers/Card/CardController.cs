@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WalletApp.Api.Controllers.Card.Dto;
-using WalletApp.Application.Commands;
 using WalletApp.Application.Contracts;
-using WalletApp.Application.Queries;
+using WalletApp.Application.CQRS.Commands;
+using WalletApp.Application.CQRS.Queries;
 
 namespace WalletApp.Api.Controllers.Card;
 

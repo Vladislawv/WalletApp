@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shared.InternalMessaging.CQRS.Abstractions;
-using WalletApp.Application.Queries;
+using WalletApp.Application.CQRS.Abstractions;
+using WalletApp.Application.CQRS.Queries;
 using WalletApp.Domain.CardAggregate;
 using WalletApp.Domain.Exceptions;
 
-namespace WalletApp.Application.QueryHandlers;
+namespace WalletApp.Application.CQRS.QueryHandlers;
 
 public class GetCardQueryHandler : IQueryHandler<GetCardQuery, Card>
 {
