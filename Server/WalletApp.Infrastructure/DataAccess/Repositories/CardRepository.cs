@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WalletApp.Domain.CardAggregate;
-using WalletApp.Infrastructure.DataAccess.Database;
+using WalletApp.Domain.Aggregates.CardAggregate;
 
 namespace WalletApp.Infrastructure.DataAccess.Repositories;
 

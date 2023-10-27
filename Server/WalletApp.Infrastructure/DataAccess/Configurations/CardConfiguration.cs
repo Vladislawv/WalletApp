@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WalletApp.Domain.CardAggregate;
-using WalletApp.Domain.UserAggregate;
+using WalletApp.Domain.Aggregates.CardAggregate;
+using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Infrastructure.DataAccess.Configurations;
 

@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
-using WalletApp.Domain.TransactionAggregate;
-using TransactionDomain = WalletApp.Domain.TransactionAggregate.Transaction;
+using WalletApp.Domain.Aggregates.TransactionAggregate;
+using TransactionDomain = WalletApp.Domain.Aggregates.TransactionAggregate.Transaction;
 
 namespace WalletApp.Api.Controllers.Transaction.Dto;
 

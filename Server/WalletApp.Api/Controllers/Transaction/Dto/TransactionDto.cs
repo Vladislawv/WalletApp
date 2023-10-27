@@ -1,4 +1,4 @@
-﻿using WalletApp.Domain.TransactionAggregate;
+﻿using WalletApp.Domain.Aggregates.TransactionAggregate;
 
 namespace WalletApp.Api.Controllers.Transaction.Dto;
 

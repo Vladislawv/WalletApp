@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using WalletApp.Application.Auth;
-using WalletApp.Domain.UserAggregate;
+using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Application.Contracts;
 
