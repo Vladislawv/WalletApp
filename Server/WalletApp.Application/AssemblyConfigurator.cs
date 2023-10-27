@@ -3,10 +3,8 @@ using Microsoft.Extensions.Configuration;
 using WalletApp.Application.DailyPoints;
 using WalletApp.Application.Options;
 using WalletApp.Application.Transactions;
-using WalletApp.Application.Users;
 using WalletApp.Domain.Aggregates.DailyPointAggregate;
 using WalletApp.Domain.Aggregates.TransactionAggregate;
-using WalletApp.Domain.Aggregates.UserAggregate;
 
 namespace WalletApp.Application;
 
@@ -19,7 +17,6 @@ public static class AssemblyConfigurator
         services.ConfigureOptions(configuration);
 
         services.AddTransient<IDailyPointCalculationService, DailyPointCalculationService>();
-        services.AddTransient<IUserService, UserService>();
         services.AddTransient<ITransactionGenerator, TransactionGenerator>();
 
         return services;

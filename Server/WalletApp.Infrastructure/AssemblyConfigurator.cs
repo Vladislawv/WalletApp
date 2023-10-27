@@ -85,12 +85,14 @@ public static class AssemblyConfigurator
 
     private static IServiceCollection ConfigureRepositories(this IServiceCollection services)
     {
+        services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<ICardRepository, CardRepository>();
         return services;
     }
     
     private static IServiceCollection ConfigureDataSources(this IServiceCollection services)
     {
+        services.AddTransient<IUserDataSource, UserDataSource>();
         services.AddTransient<ITransactionDataSource, TransactionDataSource>();
         services.AddTransient<ICardDataSource, CardDataSource>();
         return services;

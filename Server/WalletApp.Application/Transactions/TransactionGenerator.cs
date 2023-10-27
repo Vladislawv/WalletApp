@@ -1,5 +1,6 @@
-﻿using WalletApp.Domain.Aggregates.TransactionAggregate;
-using WalletApp.Domain.Aggregates.UserAggregate;
+﻿using MediatR;
+using WalletApp.Application.CQRS.Queries;
+using WalletApp.Domain.Aggregates.TransactionAggregate;
 
 namespace WalletApp.Application.Transactions;
 
@@ -16,11 +17,11 @@ public class TransactionGenerator : ITransactionGenerator
         { "Target", "Transaction from Target" }
     };
 
-    private readonly IUserService _userService;
+    private readonly IMediator _mediator;
 
-    public TransactionGenerator(IUserService userService)
+    public TransactionGenerator(IMediator mediator)
     {
-        _userService = userService;
+        _mediator = mediator;
     }
 
     public async Task<List<Transaction>> GenerateAsync(Guid userId, Guid requestedUserId, int transactionsCount = 0)
@@ -90,7 +91,7 @@ public class TransactionGenerator : ITransactionGenerator
         var isDifferentUsers = requestedUserId != userId;
         if (isDifferentUsers)
         {
-            var requestedUser = await _userService.GetByIdAsync(requestedUserId);
+            var requestedUser = await _mediator.Send(new GetUserQuery(requestedUserId));
             date = $"{requestedUser.UserName} - {date}";
         }
         
