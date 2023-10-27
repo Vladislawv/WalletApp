@@ -5,7 +5,7 @@ using TransactionDomain = WalletApp.Domain.TransactionAggregate.Transaction;
 
 namespace WalletApp.Api.Controllers.Card.Dto;
 
-public static class Convertor
+public static class Converter
 {
     private static readonly CultureInfo US_CULTURE = new("en-US");
     

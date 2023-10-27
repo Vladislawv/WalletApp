@@ -6,7 +6,7 @@ using TransactionDomain = WalletApp.Domain.TransactionAggregate.Transaction;
 
 namespace WalletApp.Api.Controllers.User.Dto;
 
-public static class Convertor
+public static class Converter
 {
     public static UserDto ToDto(this UserDomain user)
     {
