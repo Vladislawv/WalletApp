@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using WalletApp.Domain.DailyPointAggregate;
 using WalletApp.Domain.Exceptions;
 using WalletApp.Domain.UserAggregate;
 
@@ -7,10 +8,12 @@ namespace WalletApp.Application.Users;
 public class UserService : IUserService
 {
     private readonly UserManager<User> _userManager;
+    private readonly IDailyPointCalculationService _dailyPointCalculationService;
 
-    public UserService(UserManager<User> userManager)
+    public UserService(UserManager<User> userManager, IDailyPointCalculationService dailyPointCalculationService)
     {
         _userManager = userManager;
+        _dailyPointCalculationService = dailyPointCalculationService;
     }
 
     public async Task<User> GetByCredentialsAsync(string userNameOrEmail, string password)
@@ -30,7 +33,8 @@ public class UserService : IUserService
     {
         await ThrowIfUserExist(userName, email);
 
-        var user = new User { UserName = userName, Email = email };
+        var initialPoints = _dailyPointCalculationService.GetInitialPoints();
+        var user = new User { UserName = userName, Email = email, DailyPoints = initialPoints};
 
         var creationResult = await _userManager.CreateAsync(user, password);
         ThrowIfCreationIsFail(creationResult);
