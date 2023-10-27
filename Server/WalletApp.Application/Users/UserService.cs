@@ -33,9 +33,7 @@ public class UserService : IUserService
     {
         await ThrowIfUserExist(userName, email);
 
-        var initialPoints = _dailyPointCalculationService.GetInitialPoints();
-        var user = new User { UserName = userName, Email = email, DailyPoints = initialPoints};
-
+        var user = BuildUser(userName, email);
         var creationResult = await _userManager.CreateAsync(user, password);
         ThrowIfCreationIsFail(creationResult);
 
@@ -57,6 +55,12 @@ public class UserService : IUserService
         {
             throw new BadRequestException("User with the same email or username is already exists.");
         }
+    }
+
+    private User BuildUser(string userName, string email)
+    {
+        var initialPoints = _dailyPointCalculationService.GetInitialPoints();
+        return new User { UserName = userName, Email = email, DailyPoints = initialPoints, CreatedOn = DateTime.UtcNow };
     }
 
     private static void ThrowIfCreationIsFail(IdentityResult creationResult)

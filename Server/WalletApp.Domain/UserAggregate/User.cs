@@ -9,6 +9,7 @@ namespace WalletApp.Domain.UserAggregate;
 public class User : IdentityUser<Guid>
 {
     public string DailyPoints { get; set; }
+    public DateTime CreatedOn { get; set; }
     
     public virtual ICollection<Card> Cards { get; set; }
     public virtual ICollection<Transaction> Transactions { get; set; }
