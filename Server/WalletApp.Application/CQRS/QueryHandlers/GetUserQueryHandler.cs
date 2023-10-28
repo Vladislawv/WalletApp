@@ -28,7 +28,7 @@ public class GetUserQueryHandler : IQueryHandler<GetUserQuery, User>
     {
         var user = await _userManager.Users
                        .Include(x => x.Cards)
-                       .Include(x => x.Transactions)
+                       .ThenInclude(x => x.Transactions)
                        .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken) 
                    ?? throw new NotFoundException($"User with given Id: {request.Id} is not found in the system.");
 

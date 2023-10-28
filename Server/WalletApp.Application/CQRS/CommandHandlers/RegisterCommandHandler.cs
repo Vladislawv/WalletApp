@@ -50,8 +50,10 @@ public class RegisterCommandHandler : ICommandHandler<RegisterCommand>
         {
             return;
         }
+
+        var errorMessage = creationResult.Errors
+            .Aggregate(string.Empty, (current, error) => current + $"{error.Description}");
         
-        var errorMessage = string.Join("; ", creationResult.Errors);
         throw new BadRequestException(errorMessage);
     }
 }

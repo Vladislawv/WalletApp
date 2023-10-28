@@ -4,20 +4,20 @@ namespace WalletApp.Application.DailyPoints;
 
 public class DailyPointCalculationService : IDailyPointCalculationService
 {
-    private static readonly List<DateTime> FirstDaysOfSeason = new()
+    private static readonly List<int> FirstDaysOfSeason = new()
     {
-        new DateTime(DateTime.Now.Year, 12, 1),
-        new DateTime(DateTime.Now.Year, 3, 1),
-        new DateTime(DateTime.Now.Year, 6, 1),
-        new DateTime(DateTime.Now.Year, 9, 1)
+        new DateTime(DateTime.Now.Year, 12, 1).Day,
+        new DateTime(DateTime.Now.Year, 3, 1).Day,
+        new DateTime(DateTime.Now.Year, 6, 1).Day,
+        new DateTime(DateTime.Now.Year, 9, 1).Day
     };
-    
-    private static readonly List<DateTime> SecondDaysOfSeason = new()
+
+    private static readonly List<int> SecondDaysOfSeason = new()
     {
-        new DateTime(DateTime.Now.Year, 12, 2),
-        new DateTime(DateTime.Now.Year, 3, 2),
-        new DateTime(DateTime.Now.Year, 6, 2),
-        new DateTime(DateTime.Now.Year, 9, 2)
+        new DateTime(DateTime.Now.Year, 12, 2).Day,
+        new DateTime(DateTime.Now.Year, 3, 2).Day,
+        new DateTime(DateTime.Now.Year, 6, 2).Day,
+        new DateTime(DateTime.Now.Year, 9, 2).Day
     };
 
     public string Calculate(DateTime userCreatedOn)
@@ -26,23 +26,22 @@ public class DailyPointCalculationService : IDailyPointCalculationService
 
         var dayBeforeYesterdayPoints = 0;
         var yesterdayPoints = 0;
-        
+
         for (var date = userCreatedOn; date <= DateTime.UtcNow; date = date.AddDays(1))
         {
-            if (FirstDaysOfSeason.Contains(date))
+            if (FirstDaysOfSeason.Contains(date.Day))
             {
                 totalPoints += 2;
-                continue;
             }
-            if (SecondDaysOfSeason.Contains(date))
+            else if (SecondDaysOfSeason.Contains(date.Day))
             {
                 totalPoints += 3;
-                continue;
             }
-
-            var dailyPoints = dayBeforeYesterdayPoints + (yesterdayPoints * 0.6);
-            var roundedDailyPoints = Math.Round(dailyPoints / 1000) * 1000;
-            totalPoints += (int)roundedDailyPoints;
+            else
+            {
+                var dailyPoints = dayBeforeYesterdayPoints + (yesterdayPoints * 0.6);
+                totalPoints += RoundPoints(dailyPoints);
+            }
 
             dayBeforeYesterdayPoints = yesterdayPoints;
             yesterdayPoints = totalPoints;
@@ -51,18 +50,22 @@ public class DailyPointCalculationService : IDailyPointCalculationService
         return ToString(totalPoints);
     }
 
+    private static int RoundPoints(double dailyPoints)
+    {
+        var divisor = dailyPoints < 1000 ? 1 : 1000;
+        
+        var roundedPoints = Math.Round(dailyPoints / divisor) * divisor;
+        return (int)roundedPoints;
+    }
+    
     private static string ToString(int totalPoints)
     {
         var totalPointsString = totalPoints.ToString();
-        var firstZeroIndex = totalPointsString.IndexOf('0');
-        var zeroCount = totalPointsString.Length - firstZeroIndex;
-        
-        return zeroCount switch
+
+        return totalPoints switch
         {
-            6 => $"{totalPointsString[..firstZeroIndex]}KK",
-            5 => $"{totalPointsString[..(firstZeroIndex + 2)]}K",
-            4 => $"{totalPointsString[..(firstZeroIndex + 1)]}K",
-            3 => $"{totalPointsString[..firstZeroIndex]}K",
+            >= 1000000 => $"{totalPointsString[..^6]}KK",
+            >= 1000 => $"{totalPointsString[..^3]}K",
             _ => totalPointsString
         };
     }
